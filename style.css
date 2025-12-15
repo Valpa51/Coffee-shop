@@ -97,11 +97,20 @@ body{
     margin-top: 40px;
 }
 
+.menu-main2{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
 .header-menu{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    width: 100%;
+    justify-content: space-between;
+    width: 92%;
 }
 
 .menu-search{
@@ -145,7 +154,6 @@ body{
     flex-direction: row;
     justify-content: start;
     align-items: center;
-    margin-left: 80px;
     gap:30px;
 }
 
@@ -273,4 +281,183 @@ button{
 
 #selectedCard{
     border: 5px solid #AC8F64;
+}
+
+.back-to-menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 30px;
+    margin-left: 50px;
+}
+
+.back-to-menu svg{
+    fill: black;
+}
+
+.back-to-menu svg:hover{
+    fill: #483431;
+}
+
+.back-to-menu p{
+    font-size: 20px;
+    color: #000000;
+    font-family: Rosarivo;
+}
+
+.choice-coffee{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap:150px;
+}
+
+.infoAboutCoffee{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap:30px;
+}
+
+.size{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.selectSize{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap:30px;
+}
+
+.sizeCard{
+    width: 113px;
+    height: 113px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 30px;
+}
+
+.sizeCard svg{
+    fill:#AC8F64;
+}
+
+.sizeCard button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    background-color: #FFFFFF;
+}
+
+.selected-Size-Card button{
+    background-color: #AC8F64;
+    border: 2px solid black;
+}
+
+.selected-Size-Card svg{
+    fill:black;
+}
+
+.info-p {
+    font-size: 14px;
+    font-family: Rosarivo;
+    color:#00000066;
+}
+
+.selectExtra, .selectMilk{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.buttonsExtra{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap:30px;
+}
+
+.buttonsExtra button{
+    width: 200px;
+    height: 40px;
+    background-color: #FFFFFF;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+}
+
+.buttonsExtra button p{
+    font-size: 20px;
+    font-family: Rosarivo;
+    color:#000000;
+}
+
+.buttonsExtra button.selected-Extra {
+    background-color: #AC8F64;
+    border: 2px solid black;
+}
+
+.selectCount{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 30px;
+}
+
+.selectCount p{
+    font-size: 60px;
+    font-family: Open Sans;
+}
+
+.count-but{
+    display: flex;
+    flex-direction: row;
+    background-color: #FFFFFF;
+    width: 110px;
+    height: 40px;
+    border-radius: 30px;
+}
+
+.count-but p{
+    font-size: 30px;
+    font-family: Open Sans;
+}
+
+.count-but svg{
+    fill: #AC8F64;
+}
+
+.count-but button{
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.addCoffee button{
+    width: 272px;
+    height: 77px;
+    border-radius: 50px;
+}
+
+.addCoffee button p{
+    color:#FFFFFF;
+    font-size: 20px;
+    font-family: Rosarivo;
 }
