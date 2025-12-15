@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     initApp();
+    initOrderCheckPanel();
 });
 
 function initApp() {
@@ -232,4 +233,199 @@ function filterCoffeeCards(searchTerm) {
     });
     
     setupAddToCartHandlers();
+}
+
+function initOrderCheckPanel() {
+    const orderButton = document.getElementById('check-order-status');
+    const hideButton = document.querySelector('.hide');
+    const orderCheckPanel = document.querySelector('.order-check');
+    
+    console.log('Инициализация панели заказов...');
+    console.log('Кнопка:', orderButton);
+    console.log('Панель:', orderCheckPanel);
+    
+    if (!orderButton || !orderCheckPanel) {
+        console.error('Не найдены необходимые элементы!');
+        return;
+    }
+    
+    orderCheckPanel.style.display = 'none';
+    orderCheckPanel.style.flexDirection = 'column';
+    
+    orderButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Клик на ORDER STATUS');
+        
+        if (orderCheckPanel.style.display === 'none' || orderCheckPanel.style.display === '') {
+            console.log('Показываем панель');
+            orderCheckPanel.style.display = 'flex';
+            loadOrderInfo();
+        } else {
+            console.log('Скрываем панель');
+            orderCheckPanel.style.display = 'none';
+        }
+    });
+    
+    if (hideButton) {
+        hideButton.addEventListener('click', function() {
+            console.log('Клик на HIDE');
+            orderCheckPanel.style.display = 'none';
+        });
+    }
+    
+    document.addEventListener('click', function(e) {
+        const isClickInsidePanel = orderCheckPanel.contains(e.target);
+        const isClickOnOrderButton = orderButton.contains(e.target);
+        
+        if (!isClickInsidePanel && !isClickOnOrderButton && orderCheckPanel.style.display === 'flex') {
+            console.log('Клик вне панели - скрываем');
+            orderCheckPanel.style.display = 'none';
+        }
+    });
+    
+    orderCheckPanel.style.transition = 'transform 0.3s ease';
+    orderCheckPanel.style.transform = 'translateX(100%)';
+    
+    orderButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        if (orderCheckPanel.style.transform === 'translateX(100%)' || 
+            orderCheckPanel.style.transform === '') {
+            orderCheckPanel.style.display = 'flex';
+            setTimeout(() => {
+                orderCheckPanel.style.transform = 'translateX(0)';
+            }, 10);
+            loadOrderInfo();
+        } else {
+            orderCheckPanel.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                orderCheckPanel.style.display = 'none';
+            }, 300);
+        }
+    });
+    
+    if (hideButton) {
+        hideButton.addEventListener('click', function() {
+            orderCheckPanel.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                orderCheckPanel.style.display = 'none';
+            }, 300);
+        });
+    }
+}
+
+function loadOrderInfo() {
+    console.log('Загрузка информации о заказах...');
+    
+    const orderInfoContainer = document.querySelector('.order-info');
+    if (!orderInfoContainer) {
+        console.error('Не найден контейнер order-info');
+        return;
+    }
+    
+    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+    console.log('Найдено заказов:', orders.length);
+    console.log('Все заказы:', orders);
+    
+    orderInfoContainer.innerHTML = '';
+    
+    if (orders.length === 0) {
+        console.log('Нет заказов');
+        orderInfoContainer.innerHTML = '<p style="color: #666; padding: 20px;">No orders yet</p>';
+        return;
+    }
+    
+    orders.forEach((order, index) => {
+        console.log(`Обработка заказа ${index}:`, order);
+        
+        if (!order || !order.coffee) {
+            console.error('Некорректная структура заказа:', order);
+            return;
+        }
+        
+        const orderCard = document.createElement('div');
+        orderCard.className = 'order-card';
+        orderCard.style.cssText = `
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 10px 0;
+        `;
+        
+        const coffeeName = order.coffee.name || 'Unknown Coffee';
+        const coffeeImage = order.coffee.image || 'Images/default-coffee.png';
+        const coffeeSize = order.size || 'SHORT';
+        const coffeeQuantity = order.quantity || 1;
+        const coffeeExtra = order.extra || 'No extra';
+        const coffeeMilk = order.milk || 'ALMOND-MILK';
+        const coffeePrice = order.price || '₹0';
+        
+        orderCard.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
+                <div style="width: 60px; height: 60px; border-radius: 10px; overflow: hidden; background: #f0f0f0;">
+                    <img src="${coffeeImage}" alt="${coffeeName}" 
+                         style="width: 100%; height: 100%; object-fit: cover;"
+                         onerror="this.src='Images/default-coffee.png'">
+                </div>
+                <div style="flex: 1;">
+                    <h3 style="margin: 0; color: #483431; font-size: 18px;">${coffeeName}</h3>
+                    <p style="margin: 5px 0; color: #666; font-size: 14px;">
+                        Size: ${coffeeSize} | Count: ${coffeeQuantity}
+                    </p>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="color: #666; font-size: 12px;">
+                    <p style="margin: 2px 0;">Extra: ${coffeeExtra.replace('-', ' ')}</p>
+                    <p style="margin: 2px 0;">Milk: ${coffeeMilk.replace('-', ' ')}</p>
+                </div>
+                <div style="font-weight: bold; color: #483431; font-size: 18px;">
+                    ${coffeePrice}
+                </div>
+            </div>
+        `;
+        
+        orderInfoContainer.appendChild(orderCard);
+        console.log(`Карточка заказа ${index} создана`);
+    });
+    
+    try {
+        const totalAmount = orders.reduce((total, order) => {
+            if (order.price) {
+                const priceStr = order.price.toString();
+                const priceMatch = priceStr.match(/\d+/);
+                if (priceMatch) {
+                    const price = parseInt(priceMatch[0]);
+                    return total + (isNaN(price) ? 0 : price);
+                }
+            }
+            return total;
+        }, 0);
+        
+        console.log('Общая сумма:', totalAmount);
+        
+        if (totalAmount > 0) {
+            const totalDiv = document.createElement('div');
+            totalDiv.className = 'order-total';
+            totalDiv.style.cssText = `
+                margin-top: 20px;
+                padding-top: 15px;
+                border-top: 2px solid #eee;
+                display: flex;
+                justify-content: space-between;
+                font-weight: bold;
+                font-size: 20px;
+                color: #483431;
+            `;
+            totalDiv.innerHTML = `<span>Total:</span><span>₹${totalAmount}</span>`;
+            
+            orderInfoContainer.appendChild(totalDiv);
+        }
+    } catch (error) {
+        console.error('Ошибка при расчете общей суммы:', error);
+    }
+    
+    console.log('Информация о заказах загружена');
 }
