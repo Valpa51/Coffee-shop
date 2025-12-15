@@ -25,6 +25,8 @@ body{
     margin-left: 100px;
     margin-top: 40px;
     margin-right: 40px;
+    min-height: 800px;
+    width: 159px;
 }
 
 .menu-slider p{
@@ -42,6 +44,10 @@ body{
     height: 140px;
     border-radius: 20px;
     background-color: #FFFFFF;
+    box-sizing: border-box;
+    position: relative;
+    flex-shrink: 0;
+    margin: 5px 0; 
 }
 
 .selected-slider-card{
@@ -77,6 +83,17 @@ body{
 .slider-card img{
     width: 61px;
     height: 50px;
+    flex-shrink: 0;
+}
+
+.slider-card p{
+    text-align: center;
+    line-height: 1.2;
+}
+
+.slider-card.active {
+    border: 2px solid #000000 !important;
+    background-color: #AC8F64 !important;
 }
 
 .slider-card:hover{
@@ -279,7 +296,7 @@ button{
 }
 
 
-#selectedCard{
+.card:hover{
     border: 5px solid #AC8F64;
 }
 
@@ -320,6 +337,12 @@ button{
     justify-content: center;
     align-items: flex-start;
     gap:30px;
+}
+
+.infoCoffee h1{
+    font-size: 70px;
+    font-family: Rosarivo;
+    color:#000000;
 }
 
 .size{
@@ -460,4 +483,220 @@ button{
     color:#FFFFFF;
     font-size: 20px;
     font-family: Rosarivo;
+}
+
+
+.slider-card[data-coffee] {
+    cursor: pointer;
+}
+
+.slider-card.active {
+    background-color: #AC8F64 !important;
+    border: 2px solid #000000 !important;
+}
+
+.slider-card.active img,
+.slider-card.active p {
+    background-color: #AC8F64 !important;
+}
+
+.slider-card.active p {
+    color: #483431 !important;
+}
+
+.slider-arrow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 159px;
+    height: 140px;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    flex-shrink: 0;
+}
+
+.slider-arrow svg {
+    background-color: #FFFFFF;
+}
+
+
+.no-results {
+    width: 100%;
+    text-align: center;
+    padding: 40px;
+    font-size: 18px;
+    color: #666;
+    font-family: Rosarivo;
+}
+
+
+@media screen and (max-width:1024px) and (max-height:1200px)
+{
+    .mainDiv{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .header-menu{
+        display: flex;
+        flex-direction: column;
+        margin-left: 10%;
+        gap:20px;
+        width: 100%;
+    }
+
+    .menu-slider{
+        gap:10px;
+    }
+
+    .menu-slider {
+        margin-left: 20px;
+        margin-right: 20px;
+        flex-wrap: wrap;
+        justify-content: start;
+        height: auto;
+        padding: 20px;
+    }
+
+    .slider-card,
+    .slider-arrow,
+    .selected-slider-card {
+        width: 120px;
+        height: 100px;
+        margin: 5px;
+    }
+    
+    .menu-main {
+        width: 95%;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    
+    .menu-cards {
+        justify-content: center;
+    }
+    
+    .card {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .buttonsExtra button{
+        height: 50px;
+    }
+
+    .addCoffee, .selectCount{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+
+@media (max-width: 450px) {
+    
+    .menu-slider{
+        display: flex;
+        justify-content: start;
+        align-items: start;
+    }
+    
+    .order-status{
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        margin-right: 45%;
+    }
+
+}
+
+
+
+
+
+
+
+.menu-main2 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 40px;
+    padding: 0 20px;
+}
+
+.imgCoffee img {
+    width: 400px;
+    height: 400px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.choice-coffee {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 100px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.infoCoffee h1 {
+    font-size: 48px;
+    font-family: Rosarivo;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.infoCoffee p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #666;
+    max-width: 600px;
+}
+
+@media (max-width: 1024px) {
+    .choice-coffee {
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+    }
+    
+    .imgCoffee img {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .infoCoffee h1 {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-main2 {
+        padding: 0 10px;
+    }
+    
+    .choice-coffee {
+        gap: 30px;
+    }
+    
+    .selectSize {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .buttonsExtra {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .buttonsExtra button {
+        width: 150px;
+    }
 }

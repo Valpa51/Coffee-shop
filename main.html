@@ -10,28 +10,27 @@
     <main>
         <div class="mainDiv">
             <div class="menu-slider">
-                <div class="slider-card">
+                <div class="slider-arrow prev-slider">
                     <svg width="29" height="17" viewBox="0 0 29 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2.5 14.5L14.5 2.5L26.5 14.5" stroke="black" stroke-opacity="0.4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
-                <div class="selected-slider-card">
-                    <img src="Images/coffee.png">
+                <div class="slider-card active" data-coffee="cappuccino">
                     <p>Cappuccino</p>
                 </div>
-                <div class="slider-card">
+                <div class="slider-card" data-coffee="latte">
                     <p>Latte</p>
                 </div>
-                <div class="slider-card">
+                <div class="slider-card" data-coffee="americano">
                     <p>Americano</p>
                 </div>
-                <div class="slider-card">
+                <div class="slider-card" data-coffee="espresso">
                     <p>Expresso</p>
                 </div>
-                <div class="slider-card">
+                <div class="slider-card" data-coffee="flatWhite">
                     <p>Flat White</p>
                 </div>
-                <div class="slider-card">
+                <div class="slider-arrow next-slider">
                     <svg width="29" height="17" viewBox="0 0 29 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M26.5 2.5L14.5 14.5L2.5 2.5" stroke="black" stroke-opacity="0.4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -47,108 +46,23 @@
                     </div>
                     <div class="order-status">
                         <div class="order-status-img">
-                            <img src="Images/Order.png">
+                            <img src="Images/Order.png" alt="Order">
                         </div>
                         <a href="#"><p>ORDER STATUS</p></a>
                         <p id="num">0</p>
                     </div>
                 </div>
-
-                <div class="menu-cards">
-                    <div class="card" id="selectedCard">
-                        <img src="Images/cappuccino-1.png">
-                        <p>Cinnamon and Cocoa</p>
-                        <div class="instruments">
-                            <p>₹99</p>
-                            <div class="plus">
-                                <button type="submit"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.30038 9.10202H14.3041C15.0219 9.10202 15.6045 8.51945 15.6045 7.80164C15.6045 7.08384 15.0219 6.50127 14.3041 6.50127H1.30038C0.582568 6.50127 0 7.08384 0 7.80164C0 8.51945 0.582568 9.10202 1.30038 9.10202Z"/>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.10301 14.3041V1.30038C9.10301 0.582568 8.52044 0 7.80263 0C7.08483 0 6.50226 0.582568 6.50226 1.30038V14.3041C6.50226 15.0219 7.08483 15.6045 7.80263 15.6045C8.52044 15.6045 9.10301 15.0219 9.10301 14.3041Z"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img src="Images/cappuccino-2.png">
-                        <p>Drizzled with Caramel</p>
-                        <div class="instruments">
-                            <p>₹99</p>
-                            <div class="plus">
-                                <button type="submit"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.30038 9.10202H14.3041C15.0219 9.10202 15.6045 8.51945 15.6045 7.80164C15.6045 7.08384 15.0219 6.50127 14.3041 6.50127H1.30038C0.582568 6.50127 0 7.08384 0 7.80164C0 8.51945 0.582568 9.10202 1.30038 9.10202Z"/>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.10301 14.3041V1.30038C9.10301 0.582568 8.52044 0 7.80263 0C7.08483 0 6.50226 0.582568 6.50226 1.30038V14.3041C6.50226 15.0219 7.08483 15.6045 7.80263 15.6045C8.52044 15.6045 9.10301 15.0219 9.10301 14.3041Z"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img src="Images/cappuccino-3.png">
-                        <p>Bursting Blueberry</p>
-                        <div class="instruments">
-                            <p>₹99</p>
-                            <div class="plus">
-                                <button type="submit"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.30038 9.10202H14.3041C15.0219 9.10202 15.6045 8.51945 15.6045 7.80164C15.6045 7.08384 15.0219 6.50127 14.3041 6.50127H1.30038C0.582568 6.50127 0 7.08384 0 7.80164C0 8.51945 0.582568 9.10202 1.30038 9.10202Z"/>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.10301 14.3041V1.30038C9.10301 0.582568 8.52044 0 7.80263 0C7.08483 0 6.50226 0.582568 6.50226 1.30038V14.3041C6.50226 15.0219 7.08483 15.6045 7.80263 15.6045C8.52044 15.6045 9.10301 15.0219 9.10301 14.3041Z"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img src="Images/cappuccino-4.png">
-                        <p>Dalgona Macha</p>
-                        <div class="instruments">
-                            <p>₹99</p>
-                            <div class="plus">
-                                <button type="submit"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.30038 9.10202H14.3041C15.0219 9.10202 15.6045 8.51945 15.6045 7.80164C15.6045 7.08384 15.0219 6.50127 14.3041 6.50127H1.30038C0.582568 6.50127 0 7.08384 0 7.80164C0 8.51945 0.582568 9.10202 1.30038 9.10202Z"/>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.10301 14.3041V1.30038C9.10301 0.582568 8.52044 0 7.80263 0C7.08483 0 6.50226 0.582568 6.50226 1.30038V14.3041C6.50226 15.0219 7.08483 15.6045 7.80263 15.6045C8.52044 15.6045 9.10301 15.0219 9.10301 14.3041Z"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img src="Images/cappuccino-5.png">
-                        <p>Coco & Vanilla Cream</p>
-                        <div class="instruments">
-                            <p>₹99</p>
-                            <div class="plus">
-                                <button type="submit"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.30038 9.10202H14.3041C15.0219 9.10202 15.6045 8.51945 15.6045 7.80164C15.6045 7.08384 15.0219 6.50127 14.3041 6.50127H1.30038C0.582568 6.50127 0 7.08384 0 7.80164C0 8.51945 0.582568 9.10202 1.30038 9.10202Z"/>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.10301 14.3041V1.30038C9.10301 0.582568 8.52044 0 7.80263 0C7.08483 0 6.50226 0.582568 6.50226 1.30038V14.3041C6.50226 15.0219 7.08483 15.6045 7.80263 15.6045C8.52044 15.6045 9.10301 15.0219 9.10301 14.3041Z"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img src="Images/cappuccino-6.png">
-                        <p>Whipped chocolate</p>
-                        <div class="instruments">
-                            <p>₹99</p>
-                            <div class="plus">
-                                <button type="submit"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.30038 9.10202H14.3041C15.0219 9.10202 15.6045 8.51945 15.6045 7.80164C15.6045 7.08384 15.0219 6.50127 14.3041 6.50127H1.30038C0.582568 6.50127 0 7.08384 0 7.80164C0 8.51945 0.582568 9.10202 1.30038 9.10202Z"/>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.10301 14.3041V1.30038C9.10301 0.582568 8.52044 0 7.80263 0C7.08483 0 6.50226 0.582568 6.50226 1.30038V14.3041C6.50226 15.0219 7.08483 15.6045 7.80263 15.6045C8.52044 15.6045 9.10301 15.0219 9.10301 14.3041Z"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                <div class="menu-cards" id="coffeeCardsContainer">
+                    
                 </div>
-
             </div>
         </div>
     </main>
-    
+    <script src="coffee-data.js">
+        
+    </script>
+    <script src="scripts.js">
+        
+    </script>
 </body>
 </html>
